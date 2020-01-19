@@ -16,7 +16,7 @@ class BoardService {
     }
 
     addBoard(Board) {
-        return axios.post(""+BOARD_API_URL, Board);
+        return axios.post(""+ BOARD_API_URL, Board);
     }
 
     editBoard(Board) {

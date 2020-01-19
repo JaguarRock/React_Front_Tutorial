@@ -40,13 +40,14 @@ class ListBoard extends Component {
 
     addBoard() {
         window.localStorage.removeItem("id");
-        this.props.history.push('/add-board');
+        this.props.history.push('/add-boards');
     }
 
     render() {
         return (
             <div className="container">
                 <h3>All Board</h3>
+                <button className="btn btn-danger" style={{width:'100px'}} onClick={() => this.addBoard()}>Add Board</button>
                 <div className="container">
                     <table className="table">
                         <thead>

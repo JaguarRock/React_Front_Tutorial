@@ -9,7 +9,8 @@ class EditBoard extends Component {
             title : '',
             content : '',
         }
-        
+        this.saveBoard = this.saveBoard.bind(this);
+        this.loadBoard = this.loadBoard.bind(this);
     }
 
     componentDidMount() {
@@ -21,19 +22,20 @@ class EditBoard extends Component {
             .then((res) => {
                 let Board = res.data.result;
                 this.setState({
+                    id : Board.id,
                     title : Board.title,
                     content : Board.content
                 })
             });
     }
 
-    onChange = (e) => {
+    onChange = (e) => 
         this.setState({ [e.target.name] : e.target.value });
-    }
+    
 
     saveBoard = (e) => {
         e.preventDefault();
-        let Board = {id: this.state.id, title: this.state.title, content: this.state.content};
+        let Board = { id: this.state.id, title: this.state.title, content: this.state.content};
         BoardService.editBoard(Board)
             .then(res => {
                 this.props.history.push('/boards');

@@ -29,7 +29,7 @@ class ListBoard extends Component {
     deleteBoardList(id) {
         BoardService.deleteBoard(id)
             .then(res => {
-                this.setState({Boards: res.data.result})
+                this.setState({Boards: this.state.Boards.filter(Board => Board.id !== id)})
             });
     }
 
